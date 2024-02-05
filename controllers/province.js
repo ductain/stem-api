@@ -43,7 +43,7 @@ const createProvince = async (req, res) => {
       .request()
       .query("SELECT MAX(CAST(SUBSTRING(Code, 4, 100) AS INT)) AS MaxCode FROM Province WHERE Status = 1");
 
-    let code = "PRV1";  // Default code if no existing codes found
+    let code = "PRV1";
     const maxCode = highestCodeResult.recordset[0].MaxCode;
     if (maxCode) {
       code = `PRV${(maxCode + 1).toString()}`;
